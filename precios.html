@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios y Planes - DamaKatChess</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .pricing-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pricing-header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .pricing-header p {
+            color: #34495e;
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5em;
+            color: #3498db;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .pricing-card .price span {
+            font-size: 0.5em;
+            color: #7f8c8d;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .pricing-card ul li {
+            color: #34495e;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .pricing-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilos para la barra de navegación */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Estilos para el botón de WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        /* Estilos para el footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegación Mejorada -->
+    <nav class="navbar" style="background: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 10px 0;">
+        <div class="container" style="max-width: 1200px; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo" style="position: relative;">
+                <h1 style="font-size: 1.6em; background: linear-gradient(135deg, #2c3e50, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; letter-spacing: 1px; margin: 0; transition: transform 0.3s ease;">
+                    DamaKatChess
+                    <span style="display: block; font-size: 0.35em; letter-spacing: 2px; color: #7f8c8d; margin-top: 2px; -webkit-text-fill-color: #7f8c8d;">ACADEMIA DE AJEDREZ</span>
+                </h1>
+            </div>
+            <ul class="nav-links" style="display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; list-style: none;">
+                <li style="position: relative;">
+                    <a href="index.html#inicio" style="text-decoration: none; font-size: 0.95em; font-weight: 500; padding: 6px 12px; border-radius: 15px; color: #2c3e50; transition: all 0.3s ease; position: relative;">
+                        <i class="fas fa-home" style="margin-right: 4px; font-size: 0.9em;"></i>Inicio
+                    </a>
+                </li>
+                <li style="position: relative;">
+                    <a href="index.html#servicios" style="text-decoration: none; font-size: 0.95em; font-weight: 500; padding: 6px 12px; border-radius: 15px; color: #2c3e50; transition: all 0.3s ease; position: relative;">
+                        <i class="fas fa-chess" style="margin-right: 4px; font-size: 0.9em;"></i>Servicios
+                    </a>
+                </li>
+                <li style="position: relative;">
+                    <a href="index.html#beneficios" style="text-decoration: none; font-size: 0.95em; font-weight: 500; padding: 6px 12px; border-radius: 15px; color: #2c3e50; transition: all 0.3s ease; position: relative;">
+                        <i class="fas fa-star" style="margin-right: 4px; font-size: 0.9em;"></i>Beneficios
+                    </a>
+                </li>
+                <li style="position: relative;">
+                    <a href="index.html#sobre-mi" style="text-decoration: none; font-size: 0.95em; font-weight: 500; padding: 6px 12px; border-radius: 15px; color: #2c3e50; transition: all 0.3s ease; position: relative;">
+                        <i class="fas fa-user" style="margin-right: 4px; font-size: 0.9em;"></i>Sobre Mí
+                    </a>
+                </li>
+                <li style="position: relative;">
+                    <a href="index.html#galeria" style="text-decoration: none; font-size: 0.95em; font-weight: 500; padding: 6px 12px; border-radius: 15px; color: #2c3e50; transition: all 0.3s ease; position: relative;">
+                        <i class="fas fa-images" style="margin-right: 4px; font-size: 0.9em;"></i>Galería
+                    </a>
+                </li>
+                <li style="position: relative;">
+                    <a href="precios.html" style="text-decoration: none; font-size: 0.95em; font-weight: 500; padding: 6px 12px; border-radius: 15px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; transition: all 0.3s ease; position: relative;">
+                        <i class="fas fa-tag" style="margin-right: 4px; font-size: 0.9em;"></i>Precios
+                    </a>
+                </li>
+            </ul>
+            <div class="menu-btn" style="display: none;">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Precios -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <div class="pricing-header">
+                <h1>Talleres y Precios</h1>
+                <p>Encuentra el taller de ajedrez que mejor se adapte a tus necesidades. Ofrecemos diferentes modalidades para que puedas disfrutar y aprender este apasionante juego.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card" style="background: linear-gradient(135deg, #ffffff, #f0f4ff);">
+                    <div class="pricing-icon">
+                        <i class="fas fa-user" style="font-size: 3em; color: #3498db; margin-bottom: 20px;"></i>
+                    </div>
+                    <h3>Taller Individual Online</h3>
+                    <div class="price-tag" style="position: relative; display: inline-block;">
+                        <div class="price">$20.000
+                            <span style="font-size: 0.4em; display: block; color: #7f8c8d;">por clase</span>
+                        </div>
+                    </div>
+                    <ul style="margin: 30px 0;">
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-clock" style="color: #3498db;"></i>
+                            45 minutos de duración
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-star" style="color: #f1c40f;"></i>
+                            Atención personalizada
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-chalkboard-teacher" style="color: #2ecc71;"></i>
+                            Clases dinámicas
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-chart-line" style="color: #9b59b6;"></i>
+                            Aprendizaje gradual
+                        </li>
+                    </ul>
+                    <a href="https://w.app/1kgnkx" class="btn-primary" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+                        Reservar Clase
+                    </a>
+                </div>
+
+                <div class="pricing-card" style="background: linear-gradient(135deg, #ffffff, #fff0f4);">
+                    <div class="pricing-icon">
+                        <i class="fas fa-users" style="font-size: 3em; color: #e74c3c; margin-bottom: 20px;"></i>
+                    </div>
+                    <h3>Taller Grupal Online</h3>
+                    <div class="price-tag" style="position: relative; display: inline-block;">
+                        <div class="price">$15.000
+                            <span style="font-size: 0.4em; display: block; color: #7f8c8d;">por estudiante</span>
+                        </div>
+                    </div>
+                    <ul style="margin: 30px 0;">
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-clock" style="color: #e74c3c;"></i>
+                            45 minutos de duración
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-users" style="color: #f1c40f;"></i>
+                            Ambiente dinámico
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-puzzle-piece" style="color: #2ecc71;"></i>
+                            Ejercicios prácticos
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-handshake" style="color: #9b59b6;"></i>
+                            Aprendizaje colaborativo
+                        </li>
+                    </ul>
+                    <a href="https://w.app/1kgnkx" class="btn-primary" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+                        Reservar Clase
+                    </a>
+                </div>
+
+                <div class="pricing-card" style="background: linear-gradient(135deg, #ffffff, #f0fff4);">
+                    <div class="pricing-icon">
+                        <i class="fas fa-school" style="font-size: 3em; color: #27ae60; margin-bottom: 20px;"></i>
+                    </div>
+                    <h3>Talleres para Colegios</h3>
+                    <div class="price-tag" style="position: relative; display: inline-block;">
+                        <div class="price" style="font-size: 1.8em; color: #27ae60;">
+                            Consultar
+                            <span style="font-size: 0.4em; display: block; color: #7f8c8d;">precios especiales</span>
+                        </div>
+                    </div>
+                    <ul style="margin: 30px 0;">
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-info-circle" style="color: #27ae60;"></i>
+                            Para más información
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            Contactar por WhatsApp
+                        </li>
+                        <li style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <i class="fas fa-envelope" style="color: #9b59b6;"></i>
+                            O por correo electrónico
+                        </li>
+                    </ul>
+                    <a href="https://w.app/1kgnkx" class="btn-primary" style="background: linear-gradient(135deg, #27ae60, #219a52);">
+                        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+                        Solicitar Información
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sección de información de contacto -->
+            <div style="margin-top: 60px; text-align: center;">
+                <div style="background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9)); border-radius: 20px; padding: 40px; max-width: 1000px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <h3 style="color: #2c3e50; margin-bottom: 30px; font-size: 2em;">
+                        <i class="fas fa-info-circle" style="color: #27ae60; margin-right: 15px;"></i>
+                        Para más información
+                    </h3>
+                    
+                    <div style="margin-top: 40px; padding: 20px; background: linear-gradient(135deg, #27ae60, #2ecc71); border-radius: 15px; color: white;">
+                        <p style="font-size: 1.1em; line-height: 1.6;">
+                            Contáctame por WhatsApp o correo electrónico para obtener más detalles sobre los servicios disponibles.
+                        </p>
+                        <a href="https://w.app/1kgnkx" class="btn-primary" style="background: white; color: #27ae60; margin-top: 20px; display: inline-block; padding: 12px 30px; border-radius: 25px; text-decoration: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+                            Contactar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de información adicional -->
+            <div style="margin-top: 60px; text-align: center;">
+                <div style="background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9)); border-radius: 20px; padding: 30px; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <h3 style="color: #2c3e50; margin-bottom: 20px;">
+                        <i class="fas fa-info-circle" style="color: #3498db; margin-right: 10px;"></i>
+                        Información Importante
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left;">
+                        <div style="padding: 15px;">
+                            <h4 style="color: #3498db; margin-bottom: 10px;">
+                                <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                                Beneficios
+                            </h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 8px; color: #34495e;">
+                                    <i class="fas fa-chevron-right" style="color: #3498db; margin-right: 8px;"></i>
+                                    Material didáctico incluido
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="color: #e74c3c; margin-bottom: 10px;">
+                                <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
+                                Horarios
+                            </h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 8px; color: #34495e;">
+                                    <i class="fas fa-chevron-right" style="color: #e74c3c; margin-right: 8px;"></i>
+                                    Flexibilidad de horarios
+                                </li>
+                                <li style="margin-bottom: 8px; color: #34495e;">
+                                    <i class="fas fa-chevron-right" style="color: #e74c3c; margin-right: 8px;"></i>
+                                    Coordinación vía WhatsApp
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/taller_de_ajedrez?utm_source=qr&igsh=eG4xbmltN3AxbTY0" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:ajedrezkatherinesilva@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p>&copy; 2024 Servicios de Ajedrez. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://w.app/1kgnkx" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>¡Contáctame por WhatsApp!</span>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
